@@ -1,6 +1,6 @@
 name: reflection
 description: "A Flutter widget that reflects the content of a widget."
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/franklin83diaz/reflection
 
 environment:
