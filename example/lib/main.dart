@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reflection/reflection_effect.dart';
+import 'package:reflection_effect/reflection_effect.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,15 +8,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Example Reflection Widget',
       home: Scaffold(
-        body: Center(
-          child: Reflection(
-            negativeSpace: 20,
-            child: Text('Hello World',
-                style: TextStyle(fontSize: 30, color: Colors.blue)),
-          ),
+        body: Stack(
+          children: [
+            Center(child: Image.asset('images/backgraund.png')),
+            const Center(
+              child: Reflection(
+                negativeSpace: 30,
+                child: Text('Hello World',
+                    style: TextStyle(
+                        fontSize: 40, color: Color.fromARGB(255, 15, 35, 90))),
+              ),
+            ),
+          ],
         ),
       ),
     );

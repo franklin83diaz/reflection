@@ -1,3 +1,5 @@
+![image](example/images/reflection_effect.png)
+
 # Reflection
 A Flutter widget that reflects the content of a widget. This widget can be used to create mirror effects or to display information in a more visually appealing way.
 
@@ -36,4 +38,6 @@ Reflection(
         style: TextStyle(fontSize: 30, color: Colors.blue)),
     )
 ```
+
+
 
