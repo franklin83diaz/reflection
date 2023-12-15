@@ -85,7 +85,7 @@ class _ReflectWidgetState extends State<Reflection>
           ),
         );
       },
-      child: Container(child: widget.child),
+      child: widget.child,
     );
   }
 }
