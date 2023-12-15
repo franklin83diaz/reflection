@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reflection/reflection.dart';
+import 'package:reflection/reflection_effect.dart';
 
 void main() => runApp(const MyApp());
 
