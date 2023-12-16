@@ -4,34 +4,58 @@
 ///The [opacity] is the opacity of the reflection 0.0 to 1.0
 ///The [reflectionLength] is the length of the reflection 0.0 to 1.0
 ///
-class CustomSettingReflection {
-  final double skewX;
-  final double scaleY;
-  final double opacity;
-  final double reflectionLength;
-  final double positionX;
-  final double expandRight;
-  final double below;
+class SettingReflection {
+  double skewX;
+  double scaleY;
+  double opacity;
+  double reflectionLength;
+  double positionX;
+  double expandRight;
+  double below;
 
-  CustomSettingReflection({
-    this.skewX = 0.3,
-    this.scaleY = 0.8,
-    this.opacity = 0.5,
-    this.reflectionLength = 0.4,
+  SettingReflection({
+    this.skewX = 0.0,
+    this.scaleY = 0.90,
+    this.opacity = 1.0,
+    this.reflectionLength = 8.0,
     this.positionX = 0.0,
     this.expandRight = 0.0,
-    this.below = 0.0,
+    this.below = 1.0,
   });
 }
 
-class SettingReflection {
-  final CustomSettingReflection defaultReflection = CustomSettingReflection(
-    skewX: 0.3,
-    scaleY: 0.5,
-    opacity: 0.9,
-    reflectionLength: 0.4,
-    positionX: -2,
-    expandRight: 6,
-    below: -30,
-  );
+enum SettingReflectionEnum {
+  text,
+  image,
+}
+
+extension SettingReflectionEnumExtensionon on SettingReflectionEnum {
+  //get
+  SettingReflection get setting {
+    switch (this) {
+      case SettingReflectionEnum.text:
+        return SettingReflection(
+          skewX: 0.2,
+          scaleY: 0.5,
+          opacity: 0.9,
+          reflectionLength: 0.4,
+          positionX: 0.2,
+          expandRight: 10,
+          below: 10,
+        );
+      case SettingReflectionEnum.image:
+        return SettingReflection(
+          skewX: 0.2,
+          scaleY: 0.5,
+          opacity: 0.5,
+          reflectionLength: 0.4,
+          positionX: 0.2,
+          expandRight: 10,
+          below: 1,
+        );
+
+      default:
+        return SettingReflection();
+    }
+  }
 }

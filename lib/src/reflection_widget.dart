@@ -4,17 +4,27 @@ import 'package:reflection_effect/src/config_reflection.dart';
 /// Widget that shows a reflection of its child
 ///
 /// The [child] is the widget that will be reflected
-/// The [reflectionOpacity] is the opacity of the reflection
-/// The [negativeSpace] is the negative space between the child and the reflection
+/// The [settingReflection] is the setting of the reflection
 ///
+/// Example:
+/// ```dart
+/// Reflection(
+///  settingReflection: SettingReflection(
+///     skewX: 0.2,
+///     scaleY: 0.5,
+///     opacity: 0.9,
+///     reflectionLength: 0.4,
+///     positionX: 0.2,
+///     expandRight: 10,
+///     below: -32,
+///   child: const Text('Hello World ')
+/// ),
 ///
 class Reflection extends StatefulWidget {
-  const Reflection({
-    super.key,
-    required this.child,
-  });
+  const Reflection({super.key, required this.child, this.settingReflection});
 
   final Widget child;
+  final SettingReflection? settingReflection;
 
   @override
   State<Reflection> createState() => _ReflectWidgetState();
@@ -54,16 +64,16 @@ class _ReflectWidgetState extends State<Reflection>
 
   @override
   Widget build(BuildContext context) {
-    SettingReflection settingReflection = SettingReflection();
+    print(widget.settingReflection);
+    SettingReflection sR = widget.settingReflection ?? SettingReflection();
 
-    final double positionX = settingReflection.defaultReflection.positionX;
-    final double reflectionLength =
-        settingReflection.defaultReflection.reflectionLength;
-    final double skewX = settingReflection.defaultReflection.skewX;
-    final double scaleY = settingReflection.defaultReflection.scaleY;
-    final double expandRight = settingReflection.defaultReflection.expandRight;
-    final double opacity = settingReflection.defaultReflection.opacity;
-    final double below = settingReflection.defaultReflection.below;
+    final double positionX = sR.positionX;
+    final double reflectionLength = sR.reflectionLength;
+    final double skewX = sR.skewX;
+    final double scaleY = sR.scaleY;
+    final double expandRight = sR.expandRight;
+    final double opacity = sR.opacity;
+    final double below = sR.below;
 
     return OverlayPortal(
       controller: controller,

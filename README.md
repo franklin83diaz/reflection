@@ -20,24 +20,23 @@ Reflection(
 )
 ```
 
-You can also change the reflection opacity as follows:
+You can also change the reflection setting as follows:
 ```
-Reflection(
-    child: Text("This is a reflection"),
-    reflectionOpacity: 0.5,
-)
+    Reflection(
+        settingReflection: SettingReflection(
+            skewX: 0.2,
+            scaleY: 0.5,
+            opacity: 0.9,
+            reflectionLength: 0.4,
+            positionX: 0.2,
+            expandRight: 10,
+            below: -32,
+        ),
+        child: const Text('Hello World '),
+    ),
 
 ```
 
-Sometimes it becomes necessary to create a negative space between the widget and the reflection. This can be done using negative space.
-
-```
-Reflection(
-    negativeSpace: 20,
-    child: Text('Hello World',
-        style: TextStyle(fontSize: 30, color: Colors.blue)),
-    )
-```
 
 
 
