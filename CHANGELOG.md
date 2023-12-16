@@ -1,3 +1,6 @@
+## 2.0.0
+* settingReflection which allows for better reflection effects.
+
 ## 1.0.3
 * redame updated and minor issues fixed
 
