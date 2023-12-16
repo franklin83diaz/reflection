@@ -1,6 +1,6 @@
-![image](example/images/reflection_effect.png)
+![image](example/images/reflection_effect2.png)
 
-# Reflection
+# Reflection Effect
 A Flutter widget that reflects the content of a widget. This widget can be used to create mirror effects or to display information in a more visually appealing way.
 
 ## Usage
@@ -8,7 +8,7 @@ A Flutter widget that reflects the content of a widget. This widget can be used 
 To use the Reflection widget, you first need to import it into your widget file:
 
 ```
-import 'package:reflection/reflection.dart';
+import 'package:reflection_effect/reflection_effect.dart';
 ```
 
 Once you have imported the widget, you can use it as follows:

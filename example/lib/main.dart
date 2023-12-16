@@ -17,10 +17,9 @@ class MyApp extends StatelessWidget {
             Center(child: Image.asset('images/backgraund.png')),
             const Center(
               child: Reflection(
-                negativeSpace: 30,
-                child: Text('Hello World',
+                child: Text('Hello World ',
                     style: TextStyle(
-                        fontSize: 40, color: Color.fromARGB(255, 15, 35, 90))),
+                        fontSize: 60, color: Color.fromARGB(255, 15, 35, 90))),
               ),
             ),
           ],

@@ -1,5 +1,5 @@
 name: reflection_effect
-description: "Reflectable is a Flutter package that provides a customizable widget designed to create a reflective effect on its child widget, is inspired by CSS box-reflect . It's perfect for adding a touch of elegance and sophistication to your app's UI by mirroring the content of any widget you choose."
+description: "Reflectable is a Flutter package that provides a customizable widget designed to create a reflective effect on its child widget, is inspired by CSS box-reflect."
 version: 1.0.3
 homepage: https://github.com/franklin83diaz/reflection
 
