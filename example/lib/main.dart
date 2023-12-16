@@ -15,12 +15,35 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: [
             Center(child: Image.asset('images/backgraund.png')),
-            const Center(
-              child: Reflection(
-                negativeSpace: 30,
-                child: Text('Hello World',
-                    style: TextStyle(
-                        fontSize: 40, color: Color.fromARGB(255, 15, 35, 90))),
+            Center(
+              child: Row(
+                children: [
+                  const Spacer(),
+                  Reflection(
+                    settingReflection: SettingReflection(
+                      skewX: 0.2,
+                      scaleY: 0.5,
+                      opacity: 0.9,
+                      reflectionLength: 0.4,
+                      positionX: 0.2,
+                      expandRight: 10,
+                      below: -32,
+                    ),
+                    child: const Text('Hello World ',
+                        style: TextStyle(
+                            fontSize: 60,
+                            color: Color.fromARGB(255, 15, 35, 90))),
+                  ),
+                  Reflection(
+                    settingReflection: SettingReflectionEnum.image.setting,
+                    child: Container(
+                      color: Colors.red,
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                  const Spacer()
+                ],
               ),
             ),
           ],

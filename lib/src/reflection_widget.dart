@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:reflection_effect/src/config_reflection.dart';
 
 /// Widget that shows a reflection of its child
 ///
 /// The [child] is the widget that will be reflected
-/// The [reflectionOpacity] is the opacity of the reflection
-/// The [negativeSpace] is the negative space between the child and the reflection
+/// The [settingReflection] is the setting of the reflection
 ///
+/// Example:
+/// ```dart
+/// Reflection(
+///  settingReflection: SettingReflection(
+///     skewX: 0.2,
+///     scaleY: 0.5,
+///     opacity: 0.9,
+///     reflectionLength: 0.4,
+///     positionX: 0.2,
+///     expandRight: 10,
+///     below: -32,
+///   child: const Text('Hello World ')
+/// ),
 ///
 class Reflection extends StatefulWidget {
-  const Reflection(
-      {super.key,
-      required this.child,
-      this.reflectionOpacity = 0.5,
-      this.negativeSpace = 0});
+  const Reflection({super.key, required this.child, this.settingReflection});
 
   final Widget child;
-  final double reflectionOpacity;
-  final double negativeSpace;
+  final SettingReflection? settingReflection;
 
   @override
   State<Reflection> createState() => _ReflectWidgetState();
@@ -56,30 +64,55 @@ class _ReflectWidgetState extends State<Reflection>
 
   @override
   Widget build(BuildContext context) {
+    print(widget.settingReflection);
+    SettingReflection sR = widget.settingReflection ?? SettingReflection();
+
+    final double positionX = sR.positionX;
+    final double reflectionLength = sR.reflectionLength;
+    final double skewX = sR.skewX;
+    final double scaleY = sR.scaleY;
+    final double expandRight = sR.expandRight;
+    final double opacity = sR.opacity;
+    final double below = sR.below;
+
     return OverlayPortal(
       controller: controller,
       overlayChildBuilder: (BuildContext context) {
         return Positioned(
-          top: childPosition.dy + childSize.height - widget.negativeSpace,
-          left: childPosition.dx,
+          top: childPosition.dy + childSize.height + below,
+          left: childPosition.dx + positionX,
           child: ShaderMask(
             shaderCallback: (Rect bounds) {
-              return const LinearGradient(
+              return LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: <Color>[Colors.black, Color.fromARGB(0, 0, 0, 0)],
-                stops: [0.0, 1.0],
+                colors: const <Color>[
+                  Colors.black,
+                  Color.fromARGB(0, 0, 0, 0),
+                  Color.fromARGB(0, 0, 0, 0)
+                ],
+                stops: [0.0, reflectionLength, 1.0],
               ).createShader(bounds);
             },
-            blendMode: BlendMode
-                .dstIn, // Usa el destino (contenido del ShaderMask) y descarta el origen (widget hijo)
+            blendMode: BlendMode.dstIn,
             child: Opacity(
-              opacity: widget.reflectionOpacity,
+              opacity: opacity,
               child: Transform(
-                filterQuality: FilterQuality.low,
-                transform: Matrix4.identity()..scale(1.0, -1.0),
-                alignment: Alignment.center,
-                child: widget.child,
+                transform: Matrix4.skewX(skewX),
+                child: Transform(
+                  transform: Transform.scale(
+                    scaleY: scaleY,
+                  ).transform,
+                  child: Transform(
+                    filterQuality: FilterQuality.low,
+                    transform: Matrix4.identity()..scale(1.0, -1.0),
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: expandRight),
+                      child: widget.child,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
